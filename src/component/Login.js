@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPostReq, fetchPostSucc, fetchPostFail } from '../redux/PostActionCreator';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 
 const Login = () => {
@@ -50,12 +50,12 @@ const Login = () => {
                                 <div>Password</div>
                                 <input type='password' onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
                                 <button type='submit'>Continue</button>
-                                <div style={{ textAlign: "center" }}><a href='/forgot'>Forget your password?</a></div>
+                                <div style={{ textAlign: "center" }}><NavLink to='/forgot'>Forget your password?</NavLink></div>
                             </form>
                             {(<div className='error'>{err}</div>)}
 
                         </div>
-                        <div className='dont-have-acc'>Don’t have an account? <a href="/">Sign up</a> </div>
+                        <div className='dont-have-acc' onClick={() => { navigate('/forgot'); }}>Don’t have an account? <a>Sign up</a> </div>
                     </>
                 ) :
                     (<div className='parent'><div className='loader'></div></div>)
